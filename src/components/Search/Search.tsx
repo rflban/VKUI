@@ -15,7 +15,6 @@ import { noop } from "../../lib/utils";
 import Text from "../Typography/Text/Text";
 import Title from "../Typography/Title/Title";
 import Headline from "../Typography/Headline/Headline";
-import Separator from "../Separator/Separator";
 import { useExternRef } from "../../hooks/useExternRef";
 import { useEnsuredControl } from "../../hooks/useEnsuredControl";
 import "./Search.css";
@@ -121,13 +120,13 @@ const Search: React.FC<SearchProps> = ({
 
   return (
     <div
-      // eslint-disable-next-line vkui/no-object-expression-in-arguments
-      vkuiClass={classNames(getClassName("Search", platform), {
-        "Search--focused": isFocused,
-        "Search--has-value": !!value,
-        "Search--has-after": !!after,
-        "Search--has-icon": !!icon,
-      })}
+      vkuiClass={classNames(
+        getClassName("Search", platform),
+        isFocused && "Search--focused",
+        !!value && "Search--has-value",
+        !!after && "Search--has-after",
+        !!icon && "Search--has-icon"
+      )}
       className={className}
       style={style}
     >
@@ -180,7 +179,6 @@ const Search: React.FC<SearchProps> = ({
           )}
         </div>
       </div>
-      {platform === VKCOM && <Separator vkuiClass="Search__separator" wide />}
     </div>
   );
 };
