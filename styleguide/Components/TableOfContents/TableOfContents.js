@@ -5,7 +5,7 @@ import {
   SimpleCell,
   Search,
   classNames,
-  Separator,
+  Spacing,
   Footer,
   withAdaptivity,
   ViewWidth,
@@ -229,7 +229,7 @@ class TableOfContents extends React.PureComponent {
         <Fragment key={section.name}>
           {section.sections.length > 0 && !section.content && section.expand ? (
             <Fragment>
-              <Separator className="TableOfContents__separator" />
+              <Spacing separator="bottom" size={16} />
               <Header mode="secondary">{section.title || section.name}</Header>
             </Fragment>
           ) : (
@@ -251,10 +251,11 @@ class TableOfContents extends React.PureComponent {
               }
               onClick={!section.href ? this.onExpandCellClick : undefined}
               data-section-name={section.name}
-              className={classNames("TableOfContents__section", {
-                "TableOfContents__section--selected":
-                  section.name === this.state.currentSectionName,
-              })}
+              className={classNames(
+                "TableOfContents__section",
+                section.name === this.state.currentSectionName &&
+                  "TableOfContents__section--selected"
+              )}
               indicator={
                 deprecated.includes(section.name) && (
                   <Caption level="3">deprecated</Caption>
@@ -273,9 +274,10 @@ class TableOfContents extends React.PureComponent {
           )}
           {section.sections.length > 0 && (
             <div
-              className={classNames("TableOfContents__list", {
-                "TableOfContents__list--expanded": expanded,
-              })}
+              className={classNames(
+                "TableOfContents__list",
+                expanded && "TableOfContents__list--expanded"
+              )}
             >
               {this.renderSections(section.sections)}
               <Footer className="TableOfContents__nothingFound">
@@ -292,10 +294,11 @@ class TableOfContents extends React.PureComponent {
     const isMobile = this.props.viewWidth <= ViewWidth.MOBILE;
     return (
       <div
-        className={classNames("TableOfContents", {
-          "TableOfContents--desktop": !isMobile,
-          "TableOfContents--mobile": isMobile,
-        })}
+        className={classNames(
+          "TableOfContents",
+          !isMobile && "TableOfContents--desktop",
+          isMobile && "TableOfContents--mobile"
+        )}
       >
         {this.renderSections(this.sections)}
       </div>
