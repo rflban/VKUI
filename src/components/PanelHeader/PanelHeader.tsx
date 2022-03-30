@@ -3,7 +3,7 @@ import { usePlatform } from "../../hooks/usePlatform";
 import { getClassName } from "../../helpers/getClassName";
 import { classNames } from "../../lib/classNames";
 import FixedLayout from "../FixedLayout/FixedLayout";
-import Separator from "../Separator/Separator";
+import { Spacing } from "../Spacing/Spacing";
 import { Platform, VKCOM } from "../../lib/platform";
 import { HasRef, HasRootRef } from "../../types";
 import {
@@ -91,20 +91,18 @@ const PanelHeader: React.FC<PanelHeaderProps> = (props: PanelHeaderProps) => {
   return (
     <div
       {...restProps}
-      // eslint-disable-next-line vkui/no-object-expression-in-arguments
       vkuiClass={classNames(
         getClassName("PanelHeader", platform),
-        {
-          "PanelHeader--trnsp": transparent,
-          "PanelHeader--shadow": needShadow,
-          "PanelHeader--vis": visor,
-          "PanelHeader--sep": separator && visor,
-          "PanelHeader--vkapps":
-            webviewType === WebviewType.VKAPPS && !isInsideModal,
-          "PanelHeader--no-left": !left,
-          "PanelHeader--no-right": !right,
-          "PanelHeader--fixed": isFixed,
-        },
+        transparent && "PanelHeader--trnsp",
+        needShadow && "PanelHeader--shadow",
+        visor && "PanelHeader--vis",
+        separator && visor && "PanelHeader--sep",
+        webviewType === WebviewType.VKAPPS &&
+          !isInsideModal &&
+          "PanelHeader--vkapps",
+        !left && "PanelHeader--no-left",
+        !right && "PanelHeader--no-right",
+        isFixed && "PanelHeader--fixed",
         `PanelHeader--sizeX-${sizeX}`
       )}
       ref={isFixed ? getRootRef : getRef}
@@ -121,9 +119,9 @@ const PanelHeader: React.FC<PanelHeaderProps> = (props: PanelHeaderProps) => {
         <PanelHeaderIn {...props} />
       )}
       {separator && visor && platform !== VKCOM && (
-        <Separator
-          vkuiClass="PanelHeader__separator"
-          expanded={sizeX === SizeType.REGULAR}
+        <Spacing
+          size={sizeX === SizeType.REGULAR ? 16 : 1}
+          separator={sizeX !== SizeType.REGULAR}
         />
       )}
     </div>
