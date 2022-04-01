@@ -76,7 +76,7 @@ const PanelHeaderIn: React.FC<PanelHeaderProps> = ({
 };
 
 const warn = warnOnce("PanelHeader");
-const PanelHeader: React.FC<PanelHeaderProps> = ({
+const PanelHeaderComponent: React.FC<PanelHeaderProps> = ({
   before: propsBefore,
   left,
   children,
@@ -159,8 +159,7 @@ const PanelHeader: React.FC<PanelHeaderProps> = ({
   );
 };
 
-// eslint-disable-next-line import/no-default-export
-export default withAdaptivity(PanelHeader, {
+export const PanelHeader = withAdaptivity(PanelHeaderComponent, {
   sizeX: true,
   sizeY: true,
 });
