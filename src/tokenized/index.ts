@@ -43,3 +43,6 @@ export type { InputProps } from "../components/Input/Input";
 
 export { FormField } from "../components/FormField/FormField";
 export type { FormFieldProps } from "../components/FormField/FormField";
+
+export { Select } from "../components/Select/Select";
+export type { SelectProps } from "../components/Select/Select";
