@@ -15,7 +15,7 @@ export interface InputProps
     AdaptivityProps,
     FormFieldProps {}
 
-const Input: React.FunctionComponent<InputProps> = ({
+const InputComponent: React.FunctionComponent<InputProps> = ({
   align,
   getRef,
   className,
@@ -28,10 +28,9 @@ const Input: React.FunctionComponent<InputProps> = ({
   const platform = usePlatform();
   return (
     <FormField
-      // eslint-disable-next-line vkui/no-object-expression-in-arguments
       vkuiClass={classNames(
         getClassName("Input", platform),
-        { [`Input--${align}`]: !!align },
+        !!align && `Input--${align}`,
         `Input--sizeY-${sizeY}`
       )}
       style={style}
@@ -45,11 +44,10 @@ const Input: React.FunctionComponent<InputProps> = ({
   );
 };
 
-Input.defaultProps = {
+InputComponent.defaultProps = {
   type: "text",
 };
 
-// eslint-disable-next-line import/no-default-export
-export default withAdaptivity(Input, {
+export const Input = withAdaptivity(InputComponent, {
   sizeY: true,
 });
