@@ -15,7 +15,7 @@ import CustomSelectOption from "../CustomSelectOption/CustomSelectOption";
 import { SizeType } from "../../hoc/withAdaptivity";
 import { getMonths, getYears } from "../../lib/calendar";
 import { LocaleProviderContext } from "../LocaleProviderContext/LocaleProviderContext";
-import Text from "../Typography/Text/Text";
+import { Text } from "../Typography/Text/Text";
 import "./CalendarHeader.css";
 
 export interface CalendarHeaderProps
