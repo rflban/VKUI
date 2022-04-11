@@ -101,18 +101,12 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
       <div vkuiClass="CalendarHeader__pickers">
         {disablePickers ? (
           <React.Fragment>
-            <Text
-              weight="medium"
-              vkuiClass="CalendarHeader__pickers-placeholder"
-            >
+            <Text weight="2" vkuiClass="CalendarHeader__pickers-placeholder">
               {new Intl.DateTimeFormat(locale, {
                 month: "long",
               }).format(viewDate)}
             </Text>
-            <Text
-              weight="medium"
-              vkuiClass="CalendarHeader__pickers-placeholder"
-            >
+            <Text weight="2" vkuiClass="CalendarHeader__pickers-placeholder">
               {new Intl.DateTimeFormat(locale, {
                 year: "numeric",
               }).format(viewDate)}

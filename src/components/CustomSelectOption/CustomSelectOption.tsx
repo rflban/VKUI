@@ -46,7 +46,6 @@ const CustomSelectOption: React.FC<CustomSelectOptionProps> = ({
     <Text
       {...restProps}
       Component="div"
-      weight="regular"
       role="option"
       title={title}
       aria-disabled={disabled}
