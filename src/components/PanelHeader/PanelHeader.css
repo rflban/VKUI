@@ -22,6 +22,7 @@
   white-space: nowrap;
   position: relative;
   background: var(--header_background);
+  box-sizing: border-box;
 }
 
 .PanelHeader--trnsp .PanelHeader__in {
@@ -73,7 +74,6 @@
 /**
  * iOS
  */
-
 .PanelHeader--ios ~ .FixedLayout--top,
 .PanelHeader--ios ~ * .FixedLayout--top:not(.PanelHeader__fixed) {
   top: calc(var(--panelheader_height_ios) + var(--safe-area-inset-top));
@@ -151,7 +151,6 @@
 /**
  * Android
  */
-
 @supports not (padding-top: env(safe-area-inset-top)) {
   .PanelHeader--android,
   .PanelHeader--vkcom {
@@ -231,7 +230,6 @@
 /**
  * VKCOM
  */
-
 .PanelHeader--vkcom {
   position: relative;
   z-index: 10;
@@ -242,11 +240,16 @@
   top: calc(var(--panelheader_height_vkcom) + var(--safe-area-inset-top));
 }
 
+.PanelHeader--vkcom .PanelHeader__in {
+  border: var(--thin-border) solid transparent;
+  border-left-color: var(--input_border);
+  border-right-color: var(--input_border);
+}
+
 .PanelHeader--vkcom.PanelHeader--sep .PanelHeader__in {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  box-shadow: 0 0 0 var(--thin-border) var(--input_border) inset;
-  border-bottom: none;
+  border-top-color: var(--input_border);
 }
 
 .PanelHeader--vkcom .PanelHeader__content {
